@@ -1,0 +1,9 @@
+{
+  "dbURL":"mongodb://OPai:opaitac4@ds033046.mlab.com:33046/chatapp",
+"sessionSecret":"KF453FJJGHFJHG3JGF5JG42JHF23",
+"fb":{
+  "appID":"1378537488875601",
+  "appSecret":"4f0382b74f6aad60971d633c7c87a31a",
+  "callbackURL":"http://localhost:3000/auth/facebook/callback"
+}
+}

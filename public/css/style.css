@@ -1,0 +1,33 @@
+body{
+  background-color: #A0B4E2;
+  color: #4D5872;
+  font-family: 'Lato';
+}
+.signin{
+  background-color: #FFC859;
+  margin-right: 25%;
+  margin-left: 25%;
+  margin-top: 20%;
+  padding: 1%;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+.chat{
+  background-color: #C7CDDC;
+  color: #986500;
+  border: 2px solid black;
+  border-radius: 12px;
+  text-align:justify;s
+}
+.chatlist{
+  background-color: #FFC859
+  color: #986500
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+.fblogin{
+  max-width: 25%;
+}
