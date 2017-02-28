@@ -8,11 +8,14 @@ ConnectMongo = require('connect-mongo')(session),
 mongoose = require ('mongoose').connect(config.dbURL),
 passport = require ('passport'),
 FacebookStrategy = require ('passport-facebook').Strategy,
+rooms=[]
+
 app.set('views', path.join(__dirname,'views'));
 app.engine('html', require('hogan-express'));
 app.set('view engine','html');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
+
 var env = process.env.NODE_ENV || 'development';
 if (env ==='development'){
   //dev mode
@@ -31,9 +34,19 @@ if (env ==='development'){
 
 app.use(passport.initialize());
 app.use(passport.session());
-require('./routes/routes.js')(express,app, passport);
+require('./routes/routes.js')(express,app, passport, config);
 require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose);
-app.listen(3000, function(){
+
+
+/*app.listen(3000, function(){
   console.log('Chat App working on port 3000')
   console.log('Mode: '+env)
+})
+*/
+app.set('port',process.env.PORT || 3000);
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
+require('./socket/socket.js')(io, rooms);
+server.listen(app.get('port'),function(){
+  console.log('Chat App running on port: ' + app.get('port'));
 })

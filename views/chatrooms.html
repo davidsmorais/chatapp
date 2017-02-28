@@ -5,6 +5,33 @@
     <title>{{title}}</title>
 <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans+Condensed:300" rel="stylesheet">
         <link rel="stylesheet" href="../css/style.css">
+        <script src = '/socket.io/socket.io.js'></script>
+        <script src ="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script>
+        $(function(){
+          var host = '{{config.host}}';
+          var socket = io.connect(host + '/roomlist');
+          socket.on('connect',function(){
+            console.log('Connection established !');
+          })
+          socket.on('roomupdate',function(data){
+            $('.chatlist').html('');
+            var procData = JSON.parse(data);
+            for ( var i = 0; i < procData.length; i++){
+              var str = '<a href="room/'+ procData[i].room_number + '"><li>'+ procData[i].room_name + '</li></a>';
+              $('.chatlist').prepend(str);
+            }
+          })
+          $(document).on('click', '.create', function(){
+            var room_name =$('.newRoom').val();
+            if (room_name != ""){
+              var room_number = parseInt(Math.random()*10000);
+              socket.emit('newroom',{room_name:room_name,room_number:room_number})
+              $('.newRoom').val('');
+            }
+          })
+        })
+        </script>
           </head>
           <body>
             <div class= 'signin'>
@@ -18,9 +45,8 @@
   <br>
 <div class='chat'>
   <h3>Available Chats</h3>
+  <ul class='chatlist'> 
 </div>
-  <ul class='chatlist'>
-  <li>This Room</li>
   </ul>
 </div>
 

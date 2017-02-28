@@ -16,18 +16,22 @@ body{
 
 .chat{
   background-color: #C7CDDC;
-  color: #986500;
   border: 2px solid black;
   border-radius: 12px;
   text-align:justify;s
 }
 .chatlist{
-  background-color: #FFC859
-  color: #986500
+  background-color: #FFC859;
   border: 2px solid black;
   border-radius: 12px;
-}
+  padding: 1%;
 
+  transition: all 0.5s ease;
+}
+.chatlist:hover{
+  background-color: #4D5872;
+  color: #FFC859;
+}
 .fblogin{
   max-width: 25%;
 }

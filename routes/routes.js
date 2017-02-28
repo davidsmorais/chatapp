@@ -1,4 +1,4 @@
-module.exports = function(express, app, passport){
+module.exports = function(express, app, passport, config){
   var router=express.Router();
   router.get('/',function(req, res, next){
     res.render('index',{title:'Chat App by David Morais'})
@@ -19,7 +19,7 @@ router.get ('/auth/facebook/callback', passport.authenticate('facebook',{
 }))
 
   router.get('/chatrooms', securePages, function(req, res, next){
-    res.render('chatrooms',{title:'Chatrooms', user:req.user})
+    res.render('chatrooms',{title:'Chatrooms', user:req.user, config:config})
   })
 
   app.use('/', router);
