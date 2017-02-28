@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans+Condensed:300" rel="stylesheet">
+        <link rel="stylesheet" href="../css/style.css">
+        <script src = '/socket.io/socket.io.js'></script>
+        <script src ="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script>
+
+        $(function (){
+          var host = '{{config.host}}';
+          var messages = io.connect(host + '/msgs');
+          var roomNum = {{room_number}};
+          var userName = '{{user.fullname}}';
+          var userPic = '{{user.profilePic}}';
+
+          messages.on('connect', function (){
+            console.log('Connection established !')
+            messages.emit('joinroom', {room:roomNum, user:userName,  userPic:userPic})
+          })
+          $(document).on('keyup', '.msgtext', function (e){
+            if(e.which == 13 && $(this).val()!=''){
+              messages.emit('newMsg',{
+                room_number:roomNum,
+                user:userName,
+                userPic:userPic,
+                message:$(this).val()
+              })
+              updateChat(userPic, $(this).val());
+              $(this).val('')
+            }
+          })
+
+          function updateChat(userPic, message){
+            var str = "<li>"
+              str+="<div class='msgbox'>";
+                str += '<p><img class ="chathumb" src ="'+userPic+'"> '
+                str+='{{user.fullname}} : '+message;
+                str+='<p>';
+                str+='<div> </li>';
+            $(str).prependTo($('.msg'))
+          }
+        })
+        </script>
+
+          </head>
+          <body>
+            <div class= 'signin'>
+<h1>{{title}}</h1>
+<h4 class='userName'> Hello {{user.fullname}} <br> <a href="/logout">Logout </a> || <a href="/chatrooms"> More chatrooms </a>
+</h4>
+  <br>
+<div class='chat'>
+  <h3> Room: {{room_name}}</h3>
+<ul class='msg'>
+
+</ul>
+
+</div>
+
+<div class='msgtextbox'>
+<input type='text' class="msgtext" text="Type your message">
+</div>
+<div class='activeusr'>
+      <img class ="activethumb" src ="{{user.profilePic}}">
+
+</div>
+
+
+</div>
+
+
+
+          </body>
+        </html>
