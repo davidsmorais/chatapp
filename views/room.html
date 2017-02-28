@@ -32,12 +32,17 @@
               $(this).val('')
             }
           })
+          messages.on('messagefeed',function(data){
+            var msgs = JSON.parse(data);
+            updateChat(msgs.userPic, msgs.message);
+          })
+
 
           function updateChat(userPic, message){
             var str = "<li>"
               str+="<div class='msgbox'>";
                 str += '<p><img class ="chathumb" src ="'+userPic+'"> '
-                str+='{{user.fullname}} : '+message;
+                str+=message;
                 str+='<p>';
                 str+='<div> </li>';
             $(str).prependTo($('.msg'))
