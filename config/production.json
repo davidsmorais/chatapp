@@ -4,7 +4,7 @@
 "fb":{
   "appID":"1378537488875601",
   "appSecret":"4f0382b74f6aad60971d633c7c87a31a",
-  "callbackURL":"http://localhost:3000/auth/facebook/callback"
+  "callbackURL":"https://rtchatapp.herokuapp.com/auth/facebook/callback"
 },
-"host":"http://localhost:3000"
+"host":"https://rtchatapp.herokuapp.com/"
 }
