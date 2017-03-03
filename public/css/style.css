@@ -139,3 +139,6 @@ overflow-y: auto;
 .fblogin{
   max-width: 25%;
 }
+footer{
+  text-align: center;
+}

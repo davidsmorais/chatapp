@@ -1,7 +1,7 @@
 module.exports = function(express, app, passport, config, rooms){
   var router=express.Router();
   router.get('/',function(req, res, next){
-    res.render('index',{title:'Chat App by David Morais'})
+    res.render('index',{title:'Real-Time Chat App'})
   })
 
   function securePages(req, res, next){
