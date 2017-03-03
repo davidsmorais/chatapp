@@ -44,10 +44,7 @@ require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose);
 })
 */
 app.set('port',process.env.PORT || 3000);
-var server = require('http').createServer(app),
-    io = require('socket.io').listen(server),
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
 require('./socket/socket.js')(io, rooms);
-
 server.listen(process.env.PORT || 3000);
-
-})
