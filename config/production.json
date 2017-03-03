@@ -6,5 +6,5 @@
   "appSecret":"4f0382b74f6aad60971d633c7c87a31a",
   "callbackURL":"https://rtchatapp.herokuapp.com/auth/facebook/callback"
 },
-"host":"https://rtchatapp.herokuapp.com/"
+"host":"https://rtchatapp.herokuapp.com"
 }

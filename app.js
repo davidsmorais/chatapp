@@ -16,7 +16,7 @@ app.set('view engine','html');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV;
 if (env ==='development'){
   //dev mode
   app.use(session({secret:config.sessionSecret, saveUninitialized:true, resave:true}));
