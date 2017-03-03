@@ -18,7 +18,7 @@
             $('.chatlist').html('');
             var procData = JSON.parse(data);
             for ( var i = 0; i < procData.length; i++){
-              var str = '<h3><a href="room/'+ procData[i].room_number + '"><li>'+ procData[i].room_name + '</li></a></h3>';
+              var str = '<a href="room/'+ procData[i].room_number + '"><li>'+ procData[i].room_name + '</li></a>';
               $('.chatlist').prepend(str);
             }
           })
