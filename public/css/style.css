@@ -1,36 +1,133 @@
 body{
-  background-color: #A0B4E2;
-  color: #4D5872;
+  background-color: #FCFBF8 ;
+  color: #171316;
   font-family: 'Lato';
 }
+h1{
+  color: #171316;
+}
+a{
+  color:#171316;
+}
+h4{
+  color: #2F0F13;
+}
+h3{
+  color: #2F0F13;
+}
+h5{
+  margin-left: 10%;
+      word-wrap: break-word;
+
+    text-shadow: 0px 0px 1px rgba(0,0,0,0.5);
+
+}
+.create {
+  background: #A0453B;
+  font-family:'Lato';
+  border-radius: 12px;
+  border-color: #490707;
+  border-style: solid;
+  font-weight: bold;
+  color: #171316;
+  padding: 10px 10px 10px 10px;
+}
+
+.newroom{
+  background: #F0E3DF;
+  border: 2px solid #AF6552;
+  font-family: 'Lato';
+  font-weight: bold;
+
+}
+.create:hover {
+  background: #C64A43;
+}
+
+.userPic{
+  border-radius: 50px;
+  border:1px solid #021a40;
+}
+.chatpic{
+  border:1px solid #021a40;
+  border-radius:25px;
+}
 .signin{
-  background-color: #FFC859;
+  background-color: #D3ABA0;
   margin-right: 25%;
   margin-left: 25%;
   margin-top: 20%;
   padding: 1%;
+  max-height:  100%;
   text-align: center;
-  border: 2px solid black;
+  border: 2px solid #2F0F13;
   border-radius: 12px;
 }
+ul
+{
+list-style-type: none;
+}
 
-.chat{
-  background-color: #C7CDDC;
-  border: 2px solid black;
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  margin: 2%;
+  border-bottom: solid 2px #c9c9c9;
   border-radius: 12px;
+  transition: border 0.3s;
+}
+input[type="text"]:focus,
+input[type="text"].focus {
+  border-bottom: solid 2px #969696;
+}
+.activeusr{
+  background-color: #C64A43;
+  border-radius: 75px 200px 75px 200px;
+  border: 5px solid #2F0F13;
+
+}
+ul.users{
+  display:inline;
+}
+.users li{
+  display: inline-block;
+  margin: 2%;
+}
+.chat{
+  background-color: #CCC29B;
+  border: 2px solid #2F0F13;
+  padding: 2%;
+  margin: 2%;
+  border-radius:30px 5px 5px 30px;
+  max-height: 534px;
+  overflow-x:hidden;
+  overflow-y:auto;
   text-align:justify;s
 }
-.chatlist{
-  background-color: #FFC859;
-  border: 2px solid black;
+.chatlist li{
+  background-color: #AF6552;
+  border: 2px solid #2F0F13;
   border-radius: 12px;
-  padding: 1%;
-
+  padding: 5%;
+  text-align: center;
+  margin: 2%;
   transition: all 0.5s ease;
 }
-.chatlist:hover{
-  background-color: #4D5872;
-  color: #FFC859;
+.chatlist li:hover{
+  background-color: #662029;
+}
+.msgbox li{
+  background-color: #BAB18D;
+  border: 2px solid #2F0F13;
+  margin-left: 1%;
+  margin-bottom: 2%;
+  border-radius:30px 60px 60px 60px;
+  transition: all 0.5s ease;
+  overflow-x: hidden;
+overflow-y: auto;
+}
+.msgbox li:hover{
+  background-color: #D5CDAD;
 }
 .fblogin{
   max-width: 25%;

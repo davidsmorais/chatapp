@@ -59,7 +59,7 @@ module.exports = function(io, rooms){
       }
 
       socket.on('updateList', function(data){
-        updateUsersList(data.room);
+        updateUsersList(data.room, true);
       })
 
     });

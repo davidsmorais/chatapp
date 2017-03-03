@@ -16,6 +16,7 @@
           var userName = '{{user.fullname}}';
           var userPic = '{{user.profilePic}}';
 
+
           messages.on('connect', function (){
             console.log('Connection established !')
             messages.emit('joinroom', {room:roomNum, user:userName,  userPic:userPic})
@@ -41,24 +42,25 @@
 
           function updateChat(userPic, message){
             var str = "<li>"
-              str+="<div class='msgbox'>";
-                str += '<p><img class ="chathumb" src ="'+userPic+'"> '
+                str += '<img class ="chatpic" src ="'+userPic+'"><h5>'
                 str+=message;
-                str+='<p>';
-                str+='<div> </li>';
-            $(str).prependTo($('.msg'))
+                str+='</h5>';
+                str+='</li>';
+            $(str).prependTo($('.msgbox '))
           }
 
           messages.on('updateUsersList', function (data){
             var userlist = JSON.parse(data);
+            console.log(JSON.parse(data));
             $('.users').html('');
-            for (var n=0; n <userlist.length; n++){
-              var str = '<li><img class ="activethumb" src ="'+ userlist[n].userPic + '"><h5>' + userlist[n].user + '</h5></li>';
-              $(str).prependTo($('.users'))            }
+            for (var n=0; n <=userlist.length; n++){
+              var str = '<li><img class ="userPic" src ="'+ userlist[n].userPic + '"><h6>' + userlist[n].user + '</h6></li>';
+              $(str).hide().prependTo($('.users')).slideDown(100)}
 
           })
           setInterval(function(){
             messages.emit('updateList',{room:roomNum});
+
           }, 15 * 1000);
         })
 
@@ -72,19 +74,18 @@
 <h4 class='userName'> Hello {{user.fullname}} <br> <a href="/logout">Logout </a> || <a href="/chatrooms"> More chatrooms </a>
 </h4>
   <br>
-<div class='chat'>
   <h3> Room: {{room_name}}</h3>
-<ul class='msg'>
-
+<div class='chat'>
+<ul class='msgbox'>
 </ul>
-
 </div>
-
 <div class='msgtextbox'>
-<input type='text' class="msgtext" text="Type your message">
+<input type='text' class="msgtext" placeholder="Type your message">
 </div>
 <div class='activeusr'>
+  <h4>Active Users</h4>
   <ul class = 'users'>
+     <li><img class ="userPic" src ="{{user.profilePic}}"><h6>{{user.fullname}}</h6></li>
     </ul>
 </div>
 

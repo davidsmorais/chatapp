@@ -18,7 +18,7 @@
             $('.chatlist').html('');
             var procData = JSON.parse(data);
             for ( var i = 0; i < procData.length; i++){
-              var str = '<a href="room/'+ procData[i].room_number + '"><li>'+ procData[i].room_name + '</li></a>';
+              var str = '<h3><a href="room/'+ procData[i].room_number + '"><li>'+ procData[i].room_name + '</li></a></h3>';
               $('.chatlist').prepend(str);
             }
           })
@@ -37,14 +37,14 @@
             <div class= 'signin'>
 <h1>{{title}}</h1>
 <img class ="userPic" src ="{{user.profilePic}}">
-<h4 class='userName'> Hello {{user.fullname}}, <br> <a href="/logout">Logout </a>
+<h4 class='userName'> Hello {{user.fullname}} <br> <a href="/logout">Logout </a>
 </h4>
 
-<input type='text' class="newRoom">
+<input type='text' class="newRoom" placeholder="Create a new room">
 <button class="create">Create Room</button>
   <br>
 <div class='chat'>
-  <h3>Available Chats</h3>
+  <h2>Available Chats</h2>
   <ul class='chatlist'>
   </ul>
 </div>

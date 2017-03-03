@@ -41,9 +41,10 @@ function findTitle(room_id){
     }
   }
 }
-  router.get('/logout'), function (req, res, next){
-    req.session.destroy();
-    res.redirect('/');
-  }
+router.get('/logout', function (req, res){
+  req.session.destroy(function (err) {
+    res.redirect('/'); //Inside a callback… bulletproof!
+  });
+});
   app.use('/', router);
 }
