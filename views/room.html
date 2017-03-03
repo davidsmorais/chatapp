@@ -8,15 +8,12 @@
         <script src = '/socket.io/socket.io.js'></script>
         <script src ="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script>
-
         $(function (){
           var host = '{{config.host}}';
           var messages = io.connect(host + '/msgs');
           var roomNum = {{room_number}};
           var userName = '{{user.fullname}}';
           var userPic = '{{user.profilePic}}';
-
-
           messages.on('connect', function (){
             console.log('Connection established !')
             messages.emit('joinroom', {room:roomNum, user:userName,  userPic:userPic})
@@ -35,11 +32,8 @@
           })
           messages.on('messagefeed',function(data){
             var msgs = JSON.parse(data);
-
             updateChat(msgs.userPic, msgs.message);
           })
-
-
           function updateChat(userPic, message){
             var str = "<li>"
                 str += '<img class ="chatpic" src ="'+userPic+'"><h5>'
@@ -48,7 +42,6 @@
                 str+='</li>';
             $(str).prependTo($('.msgbox '))
           }
-
           messages.on('updateUsersList', function (data){
             var userlist = JSON.parse(data);
             console.log(JSON.parse(data));
@@ -56,15 +49,11 @@
             for (var n=0; n <=userlist.length; n++){
               var str = '<li><img class ="userPic" src ="'+ userlist[n].userPic + '"><h6>' + userlist[n].user + '</h6></li>';
               $(str).hide().prependTo($('.users')).slideDown(100)}
-
           })
           setInterval(function(){
             messages.emit('updateList',{room:roomNum});
-
           }, 15 * 1000);
         })
-
-
         </script>
 
           </head>

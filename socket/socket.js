@@ -71,7 +71,7 @@ module.exports = function(io, rooms){
         var res = []
         // the default namespace is "/"
         , ns = io.of(namespace ||"/");
-
+        
         if (ns) {
             for (var id in ns.connected) {
                 if(roomId) {
